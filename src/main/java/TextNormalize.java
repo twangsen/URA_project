@@ -95,7 +95,7 @@ public class TextNormalize {
 
 
             if(checkChunks(deletionByChunk, contentStatement, startPoint)){
-                System.out.println("File: " + fileName + "found under root directory: " + rootPath + "\nPath = " + filepath + " \n");
+                System.out.println("File: " + fileName + " found under root directory: " + rootPath + "\nPath = " + filepath + " \n");
                 for (int i = 0; i <  deletionByChunk.size(); i++) {
                     System.out.println("Consider Change Code Chunk:" );
                     System.out.println(getRText(deletionByChunk.get(i)));
