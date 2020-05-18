@@ -8,7 +8,7 @@
 ### TO DO:
 - Store the output in a database
 - Read from csv, Replace rootPath, fileName, deletion, addition in TextNormalize.java for actual data from csv.
-- The current csv file contains "\n" in those code chunks cells, makes it hard to scanned and parsed by newline with java.  
+- The current csv file contains "\n" in those code chunks cells, makes it hard to be scanned and parsed by newlines with java.  
 Maybe consider parse git commits into a database instead of csv files?
 
 
