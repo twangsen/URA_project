@@ -2,7 +2,9 @@
 
 ### Done:
 - Scan under a directory with given code chunks changes. See TextNormalize.java for details.
-- Normalize code chunks into two levels, and compare codes from commit code chunks and java source code.
+- Normalize code chunks into two levels, normalize by code chunks and normalize by lines
+- Compare code from code chunk changes and java source code.
+
 
 
 ### TO DO:
