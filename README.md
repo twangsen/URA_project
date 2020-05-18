@@ -1,6 +1,21 @@
 # URA_project
 
-- A sample output would be in the form of 
+### Done:
+- Scan under a directory with given code chunks changes. See TextNormalize.java for details.
+- Normalize code chunks into two levels, and compare codes from commit code chunks and java source code.
+
+
+### TO DO:
+- Store the output in a database
+- Read from csv, Replace rootPath, fileName, deletion, addition in TextNormalize.java for actual data from csv.
+- The current csv file contains "\n" in those code chunks cells, makes it hard to scanned and parsed by newline with java.  
+Maybe consider parse git commits into a database instead of csv files?
+
+
+ 
+#### A sample output for now would be in the form of 
+- This test data is selected from one of the commit in the csv file
+- This test file is stored in the directory named "dummy". 
 ```
 File: ViewPaper.java found under root directory: dummy
 Path = /Users/xxx/Desktop/URA_project/dummy/dummy2/ViewPaper.java 

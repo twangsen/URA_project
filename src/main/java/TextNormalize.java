@@ -19,22 +19,22 @@ public class TextNormalize {
         final CommentRemover remover = new CommentRemoverJC(config);
         final LineLexer lexer = new JavaLineLexer();
 
-        //TODO file path : check for all files or only file with matched file names?
-        String rootPath = "dummy";
-        //Filename to search
-        String fileName = "ViewPaper.java";
 
-        //List of all files
+        //TODO:read args from command line for csv file path name,  and read file names from the csv files.
+        String rootPath = "dummy"; //The directory storing source code.
+        //Filename to be search
+        String fileName = "ViewPaper.java"; // The file name of the commit changes.
+
+        //List of all files under root path
        Map<String,String> allFiles  = fileList(rootPath);
 
-       //TODO: if file not found
        String filepath = allFiles.get(fileName);
        String content;
 
-
-        //TODO: Some Dummy Test Data
-        ArrayList<String> deletion = new ArrayList<>();
-        ArrayList<String> addition = new ArrayList<>();
+       //TODO: read code chunk changes from csv files.
+        //TODO: Some Dummy Test Data, to be delete
+        ArrayList<String> deletion = new ArrayList<>();// code chunks deletion for a commit
+        ArrayList<String> addition = new ArrayList<>();// code chunks addition for a commit
 
         String deletion1 = "public static class SavedState extends BaseSavedState {";
         String addition1=  "public static class SavedState extends AbsSavedState {";
@@ -79,10 +79,8 @@ public class TextNormalize {
         try {
             content = new String ( Files.readAllBytes( Paths.get(filepath) ) );
             content = remover.perform(content);
-           // List<String> contentList = new ArrayList<String>(Arrays.asList(content.split("\n")));
-            //System.out.println(contentList.size());
             final List<Token> contentTokens = lexer.lexFile(content);
-           // System.out.println(contentTokens.size());
+
 
             List<Statement> contentStatement =  Statement.getJCStatements(contentTokens,false);
 
@@ -93,7 +91,7 @@ public class TextNormalize {
             }
 
 
-
+            //TODO: out put to database, for now, it prints out the outcome.
             if(checkChunks(deletionByChunk, contentStatement, startPoint)){
                 System.out.println("File: " + fileName + " found under root directory: " + rootPath + "\nPath = " + filepath + " \n");
                 for (int i = 0; i <  deletionByChunk.size(); i++) {
@@ -131,7 +129,6 @@ public class TextNormalize {
 
             String rText =  getRText(file.subList(start, start+ size));
             List<Statement> s = Statement.getJCStatements(lexer.lexFile(rText), true);
-            //System.out.println(s.equals(allChunks.get(i)));
             if(!s.equals(allChunks.get(i))){
                 return false;
             }
@@ -145,8 +142,6 @@ public class TextNormalize {
         for(Statement statement: statements){
             rText = rText + statement.rText ;
         }
-        //System.out.println(rText);
-        //System.out.println(rText);
         return rText;
     }
 
