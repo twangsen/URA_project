@@ -15,7 +15,7 @@ Maybe consider parse git commits into a database instead of csv files?
 
 
  
-#### A sample output for now would be in the form of 
+#### A sample output for now: 
 - This test data is selected from one of the commit in the csv file
 - This test file is stored in the directory named "dummy". 
 ```
